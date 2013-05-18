@@ -274,7 +274,7 @@ $.fn.extend({
 				}
 				if (allow) {
 					writeBuffer();
-				} else if (lastMatch + 1 < partialPosition) {
+				} else if (!settings.allowPartial && lastMatch + 1 < partialPosition) {
 					input.val("");
 					clearBuffer(0, len);
 				} else {
@@ -304,7 +304,7 @@ $.fn.extend({
 
 					focusText = input.val();
 					pos = checkVal();
-					
+
 					caretTimeoutId = setTimeout(function(){
 						writeBuffer();
 						if (pos == mask.length) {
